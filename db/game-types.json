@@ -1,0 +1,27 @@
+[
+    {
+        "title": "Population",
+        "src": "population.png",
+        "desc": "Guess the population of the given country. The closer you are, the better the score!"
+    },
+    {
+        "title": "Area",
+        "src": "area.png",
+        "desc": "Guess if the given country has a surface area greater or smaller than the value presented. How many can you get right without making a mistake?"
+    },
+    {
+        "title": "Currency",
+        "src": "currency.jpg",
+        "desc" : "Do you think you know the worlds currencies? Prove it!"
+    },
+    {
+        "title": "Capitals",
+        "src": "capitals.png",
+        "desc" : "Practice or learn the capitals of every country in the world!"
+    },
+    {
+        "title": "GDP per Capita",
+        "src": "gdp.jpg",
+        "desc" : "Guess the GDP per capita of the given country. The closer the better!"
+    }
+]

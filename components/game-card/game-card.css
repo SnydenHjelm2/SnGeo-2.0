@@ -1,0 +1,53 @@
+:host {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: palegreen;
+    box-shadow: 2px 2px 0px 2px;
+    transition: transform 0.5s ease;
+}
+
+:host(:hover) {
+    transform: scale(1.05);
+}
+
+button {
+    margin-top: auto;
+    padding: 10px 20px;
+    background-color: green;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-family: logo;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:hover {
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+h3 {
+    font-family: logo;
+}
+
+p {
+    text-align: center;
+}
+
+#top-img {
+    width: 100%;
+    height: 150px;
+}
+
+#top-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}

@@ -4,7 +4,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: 120px;
 }
 
 h1, h2 {
@@ -29,4 +29,14 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
+}
+
+main div {
+    display: flex;
+    gap: 25px;
+}
+
+main div game-card {
+    flex: 1 0 0;
 }
