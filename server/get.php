@@ -13,11 +13,15 @@ function GET() {
     } else if ($url === "/gameTypes") {
         header("Content-Type: application/json");
         return file_get_contents(__DIR__ . "/../db/game-types.json");
-    } else {
-        //Gör om detta så att det finns en default response av 400 Bad Request    
+    } else {  
         $splitURL = explode("/", $url);
-        if (isset($splitURL[3])) header("Content-Type: " . contentType($splitURL[1], $splitURL[3]));
-        else header("Content-Type: " . contentType($splitURL[1], $splitURL[2]));
+        $cType = "";
+        if (count($splitURL) < 3) return defaultResp();
+        if (isset($splitURL[3])) $cType = contentType($splitURL[1], $splitURL[3]);
+        else $cType = contentType($splitURL[1], $splitURL[2]);
+
+        if (!$cType) return defaultResp();
+        header("Content-Type: " . $cType);
         readfile(__DIR__ . "/.." . $url);
     }
 }

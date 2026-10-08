@@ -8,13 +8,15 @@ class GameCard extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="components/game-card/game-card.css">
 
-            <h3>${this.getAttribute("title")}</h3>
+            <h3>${this.getAttribute("game-title")}</h3>
             <div id="top-img">
                 <img src="images/${this.getAttribute("img-src")}">
             </div>
             <p>${this.getAttribute("desc")}</p>
-            <button>PLAY</button>
+            <button id="${this.getAttribute("game-title").toLowerCase() + "Button"}">PLAY</button>
         `;
+
+        this.setAttribute("id", this.getAttribute("game-title"));
     }
 }
 
