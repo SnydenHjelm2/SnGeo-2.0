@@ -1,4 +1,4 @@
-[
+const gameTypes = [
     {
         "title": "Population",
         "src": "population.png",
@@ -24,4 +24,4 @@
         "src": "gdp.jpg",
         "desc" : "Guess the GDP per capita of the given country. The closer the better!"
     }
-]
+];

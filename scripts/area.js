@@ -1,6 +1,5 @@
 const area = {
-    async driver() {
-        await initialize;
+    driver() {
         elements.areaButton.addEventListener("click", () => {
             hide.main();
             show.game();

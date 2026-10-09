@@ -1,6 +1,5 @@
-const driver = async () => {
-    let gamesTypes = await req.send("gameTypes");
-    for (let type of gamesTypes) {
+const driver = () => {
+    for (let type of gameTypes) {
         let e = document.createElement("game-card");
         e.setAttribute("game-title", type.title);
         e.setAttribute("img-src", type.src);
@@ -14,9 +13,26 @@ const driver = async () => {
 const elements = {
     game: document.querySelector("#game"),
 
+    gameControls: document.querySelector("#game #controls"),
+
+    gameDesc: document.querySelector("#game #desc"),
+
+    gameField: document.querySelector("#game #field"),
+
+    gameH2: document.querySelector("#game h2"),
+
+    gameHelp: document.querySelector("#game #help"),
+
     main: document.querySelector("main"),
 
     mainDiv: document.querySelector("main div")
+}
+
+const empty = {
+    game() {
+        elements.gameControls.innerHTML = "";
+        elements.gameField.innerHTML = "";
+    }
 }
 
 const hide = {
@@ -64,4 +80,4 @@ const show = {
     }
 }
 
-const initialize = driver();
+driver();
