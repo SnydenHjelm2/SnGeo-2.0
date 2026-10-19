@@ -1,0 +1,38 @@
+#account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#account-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin-top: auto;
+    padding: 15px 30px;
+    background-color: green;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:hover {
+    background-color: greenyellow;
+    cursor: pointer;
+}
