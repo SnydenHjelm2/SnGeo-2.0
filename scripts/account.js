@@ -1,33 +1,59 @@
 const account = {
-    bodyMargin(remove) {
-        if (remove) document.body.style.margin = "0px";
-        else document.body.style.margin = "20px";
-    },
-
     driver() {
         this.hide(this.elements.profileButton);
+        this.hide(this.elements.logOutButton);
         this.hide(this.elements.overlay);
+        this.empty();
+
+        this.elements.back.addEventListener("click", () => {
+            this.hide(this.elements.overlay);
+            this.empty();
+        });
 
         this.elements.signUpButton.addEventListener("click", () => {
             this.show(this.elements.overlay, "flex");
-            this.bodyMargin(true);
-            this.emptyOverlay();
-            
+            this.elements.overlayH2.textContent = "Sign Up";
         });
+
+        this.elements.logInButton.addEventListener("click", () => {
+            this.show(this.elements.overlay, "flex");
+            this.elements.overlayH2.textContent = "Log In";
+        });
+
+        this.elements.submit.addEventListener("click", this.submit);
     },
 
     elements: {
+        accountP: document.querySelector("#account p"),
+
+        back: document.querySelector("#back"),
+
         logInButton: document.querySelector("#log-in"),
+
+        logOutButton: document.querySelector("#log-out"),
 
         overlay: document.querySelector("#account-overlay"),
 
+        overlayDiv: document.querySelector("#overlay-div"),
+
+        overlayH2: document.querySelector("#overlay-div h2"),
+
         profileButton: document.querySelector("#profile"),
 
-        signUpButton: document.querySelector("#sign-up")
+        pwd: document.querySelector("#pwd"),
+
+        signUpButton: document.querySelector("#sign-up"),
+
+        status: document.querySelector("#status"),
+
+        submit: document.querySelector("#submit"),
+
+        username: document.querySelector("#username")
     },
 
-    emptyOverlay() {
-        this.elements.overlay.innerHTML = "";
+    empty() {
+        this.elements.username.value = "";
+        this.elements.pwd.value = "";
     },
 
     hide(element) {
@@ -36,6 +62,44 @@ const account = {
 
     show(element, type) {
         element.style.display = type;
+    },
+
+    async submit() {
+        let type = account.elements.overlayH2.textContent;
+        let username = account.elements.username.value;
+        let pwd = account.elements.pwd.value;
+
+        account.elements.status.textContent = "Please wait...";
+        if (type.toLowerCase() === "sign up") {
+            let result = await req.send("sign-up", "POST", {
+                username: username,
+                pwd: pwd
+            });
+            if (result.error) {account.elements.status.textContent = "Error: " + result.error; return;}
+
+            account.elements.status.textContent = result.success;
+            setTimeout(() => {
+                account.hide(account.elements.overlay);
+                account.empty();
+            }, 2000);
+        } else if (type.toLowerCase() === "log in") {
+            let result = await req.send("log-in", "POST", {
+                username: username,
+                pwd: pwd
+            });
+            if (result.error) {account.elements.status.textContent = "Error: " + result.error; return;}
+
+            account.elements.status.textContent = "Successfully logged in!";
+            setTimeout(() => {
+                account.hide(account.elements.overlay);
+                account.empty();
+                account.hide(account.elements.signUpButton);
+                account.hide(account.elements.logInButton);
+                account.show(account.elements.profileButton, "inline");
+                account.show(account.elements.logOutButton, "inline");
+                account.elements.accountP.textContent = `Logged in as ${result.username}`;
+            }, 2000)
+        }
     }
 }
 

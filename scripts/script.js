@@ -62,11 +62,17 @@ const req = {
         }
     },
 
-    async send(endpoint) {
-        let resp = await fetch("http://localhost:8000/" + endpoint);
+    async send(endpoint, method, body = null) {
+        let options = {
+            method: method,
+            headers: {"Content-Type": "application/json"}
+        }
+        if (body !== null) options.body = JSON.stringify(body);
+        let request = new Request("http://localhost:8000/" + endpoint, options);
 
-        if (resp.ok) return resp.json();
-        else return {code: resp.status, msg: resp.statusText};
+        let resp = await fetch(request);
+        let reso = await resp.json();
+        return reso;
     }
 }
 

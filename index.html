@@ -20,9 +20,19 @@
             <button id="sign-up">Sign Up</button>
             <button id="log-in">Log In</button>
             <button id="profile">Profile</button>
+            <button id="log-out">Log Out</button>
         </div>
     </div>
-    <div id="account-overlay"></div>
+    <div id="account-overlay">
+        <div id="overlay-div">
+            <h2></h2>
+            <input id="username" placeholder="Enter username..." type="text">
+            <input id="pwd" placeholder="Enter password..." type="password">
+            <button id="submit">Submit</button>
+            <button id="back">Go Back</button>
+            <p id="status">...</p>
+        </div>
+    </div>
 
     <main>
         <h2>Pick a game!</h2>
@@ -41,6 +51,8 @@
     <script src="components/game-card/game-card.js"></script>
     <script src="scripts/countries.js"></script>
     <script src="scripts/game-types.js"></script>
+    <script src="scripts/state.js"></script>
+    <script src="scripts/store.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/account.js"></script>
     <script src="scripts/population.js"></script>
