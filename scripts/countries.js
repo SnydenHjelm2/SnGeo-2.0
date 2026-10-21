@@ -213,4 +213,4 @@ const countries = {
           { name: "Zambia", flag: "🇿🇲", alias: "ZMB" },
           { name: "Zimbabwe", flag: "🇿🇼", alias: "ZWE" },
   ],
-}
+};

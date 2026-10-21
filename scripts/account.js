@@ -20,6 +20,10 @@ const account = {
             this.elements.overlayH2.textContent = "Log In";
         });
 
+        this.elements.logOutButton.addEventListener("click", () => {
+
+        });
+
         this.elements.submit.addEventListener("click", this.submit);
     },
 
@@ -60,6 +64,10 @@ const account = {
         element.style.display = "none";
     },
 
+    async initializeLogIn(user) {
+        
+    },
+
     show(element, type) {
         element.style.display = type;
     },
@@ -90,6 +98,7 @@ const account = {
             if (result.error) {account.elements.status.textContent = "Error: " + result.error; return;}
 
             account.elements.status.textContent = "Successfully logged in!";
+            await account.initializeLogIn(result);
             setTimeout(() => {
                 account.hide(account.elements.overlay);
                 account.empty();

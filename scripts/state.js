@@ -3,5 +3,7 @@ const state = {
         username: "",
 
         id: ""
-    }
-}
+    },
+
+    games: []
+};

@@ -1,1 +1,7 @@
-[{"username":"neo","pwd":"test","id":"6ad78da11e6f7"}]
+[
+    {
+        "username": "neo",
+        "pwd": "test",
+        "id": "6ad78da11e6f7"
+    }
+]
