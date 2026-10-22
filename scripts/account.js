@@ -21,7 +21,12 @@ const account = {
         });
 
         this.elements.logOutButton.addEventListener("click", () => {
-
+            store.reset();
+            this.elements.accountP.textContent = "Currently not logged in";
+            this.hide(this.elements.logOutButton);
+            this.hide(this.elements.profileButton);
+            this.show(this.elements.logInButton, "inline");
+            this.show(this.elements.signUpButton, "inline");
         });
 
         this.elements.submit.addEventListener("click", this.submit);
@@ -65,7 +70,16 @@ const account = {
     },
 
     async initializeLogIn(user) {
-        
+        let games = await req.send(`games?=user=${user.id}`);
+
+        store.setState({
+            user: {
+                username: user.username,
+                id: user.id
+            },
+
+            games: [...store.getState().games, ...games]
+        });
     },
 
     show(element, type) {
@@ -106,7 +120,7 @@ const account = {
                 account.hide(account.elements.logInButton);
                 account.show(account.elements.profileButton, "inline");
                 account.show(account.elements.logOutButton, "inline");
-                account.elements.accountP.textContent = `Logged in as ${result.username}`;
+                account.elements.accountP.textContent = `Logged in as: ${result.username}`;
             }, 2000)
         }
     }

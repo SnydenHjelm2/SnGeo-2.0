@@ -7,6 +7,10 @@ const store = {
         this.setState(state);
     },
 
+    reset() {
+        this.initialize();
+    },
+
     setState(state) {
         if (typeof state !== "object" || Array.isArray(state)) return false;
         this.stateHistoy.push(this.state);

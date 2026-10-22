@@ -9,7 +9,7 @@ const population = {
         randomButton.classList.add("random");
         randomButton.textContent = "Random Country";
         elements.gameControls.appendChild(randomButton);
-        randomButton.addEventListener("click", () => {this.spawn(true)});
+        randomButton.addEventListener("click", () => {this.start(true)});
 
         let allCountries = document.createElement("select");
         elements.gameControls.appendChild(allCountries);
@@ -29,6 +29,18 @@ const population = {
         elements.populationButton.addEventListener("click", () => {this.initiate()});
     },
 
+    elements: {
+        populationButton: document.querySelector("#population button"),
+
+        populationField: document.querySelector("#population"),
+
+        populationH2: document.querySelector("#population h2"),
+
+        populationInput: document.querySelector("#population input"),
+
+        populationSelect: document.querySelector("#population select")
+    },
+
     initiate() {
         empty.game();
         hide.main();
@@ -38,7 +50,6 @@ const population = {
     },
 
     numbers(pop) {
-        console.log(pop);
         pop = pop * 1000;
         let popString = pop.toString();
         let popObj = {fullPop: pop};
@@ -74,13 +85,23 @@ const population = {
         }
     },
 
-    async spawn(random, selected) {
+    async random() {
+        let country = countries.random();
+        let countryFromApi = await req.api(country.alias);
+        let population = this.numbers(countryFromApi[0].population);
+
+        return {
+            country: country,
+            pop: population
+        }
+    },
+
+    async start(random, selected) {
         if (random) {
-            let country = countries.random();
-            let countryFromApi = await req.api(country.alias);
-            let population = this.numbers(countryFromApi[0].population);
-            console.log(countryFromApi);
-            console.log(population);
+            let data = await population.random();
+            console.log(data);
+
+
         }
     }
 }
